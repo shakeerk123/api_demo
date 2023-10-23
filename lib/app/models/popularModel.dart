@@ -1,6 +1,8 @@
-// To parse this JSON data, do
+
 //
 //     final movieDataModel = movieDataModelFromJson(jsonString);
+
+// ignore_for_file: file_names
 
 import 'dart:convert';
 
