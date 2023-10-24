@@ -28,8 +28,8 @@ class HomeScreen extends StatelessWidget {
         ],
         title: Shimmer.fromColors(
           period: const Duration(milliseconds: 4000),
-          baseColor: Colors.white,
-          highlightColor: Colors.grey,
+          baseColor: Colors.grey,
+          highlightColor: Colors.white,
           child: Image.asset("assets/cinemaven.png", height: 50),
         ),
         centerTitle: true,

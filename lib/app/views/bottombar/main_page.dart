@@ -3,7 +3,6 @@ import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,9 +13,9 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages =[
-    HomeScreen(),
-    ProfilePage(),
-    ProfilePage()
+    const HomeScreen(),
+    const ProfilePage(),
+    const ProfilePage()
   ];
 
   @override
@@ -35,7 +34,7 @@ class _MainPageState extends State<MainPage> {
         showUnselectedLabels: false,
         
         
-        items: [
+        items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.search),label: "search"),
         BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),

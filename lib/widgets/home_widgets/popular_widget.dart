@@ -2,7 +2,6 @@ import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/models/popularModel.dart';
 import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
-import 'package:api_demo/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';

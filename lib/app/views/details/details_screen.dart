@@ -4,6 +4,7 @@ import 'package:api_demo/app/models/popularModel.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({
@@ -15,8 +16,17 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return Scaffold(appBar: AppBar(elevation: 9,
+      backgroundColor: Colors.transparent,
+      title: Shimmer.fromColors(
+          period: const Duration(milliseconds: 4000),
+          baseColor: Colors.grey,
+          highlightColor: Colors.white,
+          child: Image.asset("assets/cinemaven.png", height: 50),
+        ),
+      centerTitle: true,
+    ),
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -41,7 +51,7 @@ class DetailsScreen extends StatelessWidget {
               ),
             ),
             SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -77,7 +87,7 @@ class DetailsScreen extends StatelessWidget {
                         Text("Rating ",
                             style: GoogleFonts.poppins(
                                 fontSize: 15, fontWeight: FontWeight.w500)),
-                        Icon(Icons.star, color: Colors.amber),
+                        const Icon(Icons.star, color: Colors.amber),
                         Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10"),
                         
                       ],
