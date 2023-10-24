@@ -1,14 +1,16 @@
 import 'package:api_demo/app/controller/mainController.dart';
-import 'package:api_demo/app/models/popularModel.dart';
-import 'package:api_demo/utils/api_const.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:api_demo/widgets/home_widgets/popular_widget.dart';
+import 'package:api_demo/widgets/home_widgets/toprated.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+import 'package:shimmer/shimmer.dart';
+
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  // ignore: use_key_in_widget_constructors
+  const HomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,65 +19,36 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 70,
         backgroundColor: Colors.transparent,
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: EdgeInsets.all(12.0),
             child: Icon(Icons.search),
           )
         ],
-        title: Image.asset(
-          "assets/cinemaven.png",
-          height: 50,
+        title: Shimmer.fromColors(
+          period: const Duration(milliseconds: 4000),
+          baseColor: Colors.white,
+          highlightColor: Colors.grey,
+          child: Image.asset("assets/cinemaven.png", height: 50),
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+        physics:const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 20),
+            PopularMovieWidget(controller: controller),
+            const SizedBox(height: 20),
+            
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text("Popular Movies" ,style: GoogleFonts.kanit(fontSize: 20),),
+              padding: const EdgeInsets.symmetric(horizontal:8.0),
+              child: Text("Top Rated !!! ",style: GoogleFonts.kanit(fontSize: 20),),
             ),
-            SizedBox(height: 20,),
-            SizedBox(
-              width: double.infinity,
-              child: CarouselSlider.builder(
-                itemCount: 6,
-                options:
-                    CarouselOptions(autoPlay: true, enlargeCenterPage: true),
-                itemBuilder: (context, index, pageViewIndex) {
-                  return FutureBuilder(
-                    future: controller.popularmovies,
-                    builder: (BuildContext context,
-                        AsyncSnapshot<dynamic> snapshot) {
-                      if (snapshot.hasData) {
-                        MovieDataModel? data = snapshot.data as MovieDataModel?;
-                        List<Result> results = data?.results ?? [];
-                        String poster = results[index].posterPath;
-                      
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Container(
-                            height: 400,
-                            width: MediaQuery.of(context).size.width * 0.75,
-                            child: Image.network(
-                              "$imagePath$poster",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      } else {
-                        return Center(
-                          child: SizedBox(width: 40,
-                            child: LoadingIndicator(indicatorType: Indicator.ballPulse,colors: [Colors.white,Colors.blue],)),
-                        );
-                      }
-                    },
-                  );
-                },
-              ),
-            )
+        
+            const SizedBox(height: 10),
+            TopRatedMoviesWidget(controller: controller)
           ],
         ),
       ),

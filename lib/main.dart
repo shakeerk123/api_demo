@@ -1,5 +1,6 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/views/bottombar/main_page.dart';
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colours.scaffoldBgColor,
         useMaterial3: true,
       ),
-      home:  HomeScreen(),
+      home:  MainPage(),
     );
   }
 }
