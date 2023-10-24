@@ -9,11 +9,15 @@ class MainController extends GetxController{
 var currentIndex = 0.obs;
 var popularmovies;
 var topratedmovies;
+var upComingmovies;
+var nowPlayingmovies;
 
 @override
   void onInit(){
     popularmovies = getPopularMovies();
     topratedmovies = getTopRatedMovies();
+    upComingmovies = getUpcomingMovies();
+    nowPlayingmovies = getNowPlayingMovies();
   
     super.onInit();
   }

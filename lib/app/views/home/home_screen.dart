@@ -1,9 +1,10 @@
 import 'package:api_demo/app/controller/mainController.dart';
+import 'package:api_demo/widgets/home_widgets/now_playing.dart';
 import 'package:api_demo/widgets/home_widgets/popular_widget.dart';
 import 'package:api_demo/widgets/home_widgets/toprated.dart';
+import 'package:api_demo/widgets/home_widgets/upcoming.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -48,7 +49,24 @@ class HomeScreen extends StatelessWidget {
             ),
         
             const SizedBox(height: 10),
-            TopRatedMoviesWidget(controller: controller)
+            TopRatedMoviesWidget(controller: controller),
+            const SizedBox(height: 20),
+            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:8.0),
+              child: Text("UpComing !!! ",style: GoogleFonts.kanit(fontSize: 20),),
+            ),
+        
+            const SizedBox(height: 10),
+            UpcomingMoviesWidget(controller: controller),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:8.0),
+              child: Text("Now Playing ",style: GoogleFonts.kanit(fontSize: 20),),
+            ),
+        
+            const SizedBox(height: 10),
+            NowPlayingMoviesWidget(controller: controller)
           ],
         ),
       ),

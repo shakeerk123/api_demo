@@ -5,8 +5,8 @@ import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class TopRatedMoviesWidget extends StatelessWidget {
-  const TopRatedMoviesWidget({
+class UpcomingMoviesWidget extends StatelessWidget {
+  const UpcomingMoviesWidget({
     super.key,
     required this.controller,
   });
@@ -16,7 +16,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: controller.topratedmovies,
+      future: controller.upComingmovies,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           MovieDataModel? data = snapshot.data as MovieDataModel?;

@@ -1,5 +1,6 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:api_demo/utils/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -31,42 +32,54 @@ class PopularMovieWidget extends StatelessWidget {
                 List<Result> results = data?.results ?? [];
                 String poster = results[index].posterPath;
 
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(4),
-                  child: Stack(
-                    children: [
-                      SizedBox(
-                        height: 400,
-                        width: MediaQuery.of(context).size.width * 0.75,
-                        child: Image.network(
-                          "$imagePath$poster",
-                          fit: BoxFit.cover,
-                        ),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            DetailsScreen(movie: results[index]),
                       ),
-                      Positioned(
-                        top: 8,
-                        left: 8,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: Container(
-                            width: 50,
-                            height: 18,
-                            color: const Color.fromARGB(255, 8, 129, 228),
-                            child: Center(
-                              child: Shimmer.fromColors(
-                                baseColor: Colors.white,
-                                highlightColor: Colors.grey,
-                                child: const Text(
-                                  "POPULAR",
-                                  style: TextStyle(
-                                      fontSize: 7, fontWeight: FontWeight.w600),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Stack(
+                      children: [
+                        SizedBox(
+                          height: 400,
+                          width: MediaQuery.of(context).size.width * 0.75,
+                          child: Image.network(
+                            "$imagePath$poster",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Positioned(
+                          top: 8,
+                          left: 8,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: Container(
+                              width: 50,
+                              height: 18,
+                              color: const Color.fromARGB(255, 8, 129, 228),
+                              child: Center(
+                                child: Shimmer.fromColors(
+                                  baseColor: Colors.white,
+                                  highlightColor: Colors.grey,
+                                  child: const Text(
+                                    "POPULAR",
+                                    style: TextStyle(
+                                        fontSize: 7,
+                                        fontWeight: FontWeight.w600),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 );
               } else {

@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 var _trendingLink = 'https://api.themoviedb.org/3/trending/movie/day?api_key=$apiKey';
 var _topRatedLink = 'https://api.themoviedb.org/3/movie/top_rated?api_key=$apiKey';
+var _upcomingLink = 'https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey';
+var _nowPlayingLink = 'https://api.themoviedb.org/3/movie/now_playing?api_key=$apiKey';
 
 
 getPopularMovies()async{
@@ -19,6 +21,23 @@ getPopularMovies()async{
 
 getTopRatedMovies()async{
    var res = await http.get(Uri.parse(_topRatedLink));
+   if(res.statusCode == 200){
+    var data = movieDataModelFromJson(res.body.toString());
+    log("data recieved");
+    return data;
+   }
+}
+
+getUpcomingMovies()async{
+   var res = await http.get(Uri.parse(_upcomingLink));
+   if(res.statusCode == 200){
+    var data = movieDataModelFromJson(res.body.toString());
+    log("data recieved");
+    return data;
+   }
+}
+getNowPlayingMovies()async{
+   var res = await http.get(Uri.parse(_nowPlayingLink));
    if(res.statusCode == 200){
     var data = movieDataModelFromJson(res.body.toString());
     log("data recieved");

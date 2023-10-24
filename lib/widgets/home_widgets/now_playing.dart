@@ -5,8 +5,8 @@ import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class TopRatedMoviesWidget extends StatelessWidget {
-  const TopRatedMoviesWidget({
+class NowPlayingMoviesWidget extends StatelessWidget {
+  const NowPlayingMoviesWidget({
     super.key,
     required this.controller,
   });
@@ -16,7 +16,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: controller.topratedmovies,
+      future: controller.nowPlayingmovies,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           MovieDataModel? data = snapshot.data as MovieDataModel?;
@@ -55,9 +55,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
               },
             ),
           );
-        } else if(snapshot.hasError) {
-          return Center(child: Text(snapshot.hasError.toString()),);
-        }else{
+        } else {
           return Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
             highlightColor: Colors.grey.shade100,
