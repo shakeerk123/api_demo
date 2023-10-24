@@ -41,6 +41,7 @@ class DetailsScreen extends StatelessWidget {
               ),
             ),
             SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -48,7 +49,7 @@ class DetailsScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsets.only(top: 50,left: 20,right: 20),
+                          const EdgeInsets.only(top: 50, left: 20, right: 20),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: SizedBox(
@@ -71,13 +72,24 @@ class DetailsScreen extends StatelessWidget {
                         style: GoogleFonts.poppins(
                             fontSize: 15, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
-                     Row(
+                    Row(
                       children: [
-                        Text("Rating ",style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
-                        Icon(Icons.star, color: Colors.amber),Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10")
+                        Text("Rating ",
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, fontWeight: FontWeight.w500)),
+                        Icon(Icons.star, color: Colors.amber),
+                        Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10"),
+                        
                       ],
+                    ),
+                    const SizedBox(height: 20),
+
+                    ClipRRect(borderRadius: BorderRadius.circular(12),
+                      child: SizedBox(height: 200,
+                        child: Image.network("$imagePath${movie.backdropPath}"),
+                      ),
                     )
+                    
                   ],
                 ),
               ),
