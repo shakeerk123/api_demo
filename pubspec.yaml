@@ -41,6 +41,7 @@ dependencies:
   google_fonts: ^6.1.0
   carousel_slider: ^4.2.1
   shimmer: ^3.0.0
+  emojis: ^0.9.9
   
 
 dev_dependencies:

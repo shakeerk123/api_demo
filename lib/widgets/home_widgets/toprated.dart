@@ -55,8 +55,7 @@ class TopRatedMoviesWidget extends StatelessWidget {
               },
             ),
           );
-        } else if(snapshot.hasError) {
-          return Center(child: Text(snapshot.hasError.toString()),);
+       
         }else{
           return Shimmer.fromColors(
             baseColor: Colors.grey.shade300,

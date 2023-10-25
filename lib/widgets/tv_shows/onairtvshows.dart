@@ -1,12 +1,12 @@
 import 'package:api_demo/app/controller/mainController.dart';
-import 'package:api_demo/app/models/popularModel.dart';
-import 'package:api_demo/app/views/details/details_screen.dart';
+import 'package:api_demo/app/models/tvshows_model.dart';
+import 'package:api_demo/app/views/details/tvshow_details.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class UpcomingMoviesWidget extends StatelessWidget {
-  const UpcomingMoviesWidget({
+class PopularTvShows extends StatelessWidget {
+  const PopularTvShows({
     super.key,
     required this.controller,
   });
@@ -16,11 +16,11 @@ class UpcomingMoviesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: controller.upComingmovies,
+      future: controller.airTvshows,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
-          MovieDataModel? data = snapshot.data as MovieDataModel?;
-          List<Result> results = data?.results ?? [];
+          TvshowsDataModel? data = snapshot.data as TvshowsDataModel?;
+          List<Results> results = data?.results ?? [];
 
           return SizedBox(
             height: 200,
@@ -37,7 +37,7 @@ class UpcomingMoviesWidget extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            DetailsScreen(movie: results[index]),
+                            TvShowDetailsScreen(tvshow: results[index]),
                       ),
                     );
                   },
@@ -55,8 +55,7 @@ class UpcomingMoviesWidget extends StatelessWidget {
               },
             ),
           );
-        
-        }else{
+        } else {
           return Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
             highlightColor: Colors.grey.shade100,

@@ -1,20 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/models/tvshows_model.dart';
 import 'package:api_demo/utils/api_const.dart';
 
-class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
+class TvShowDetailsScreen extends StatelessWidget {
+  const TvShowDetailsScreen({
     Key? key,
-    required this.movie,
+    required this.tvshow,
     
   }) : super(key: key);
 
-  final Result movie;
+  final Results tvshow;
   
 
   @override
@@ -31,7 +29,7 @@ class DetailsScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: NetworkImage('$imagePath${movie.posterPath}'),
+                  image: NetworkImage('$imagePath${tvshow.posterPath}'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,19 +62,19 @@ class DetailsScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 400,
                           child: Image.network(
-                            '$imagePath${movie.posterPath}',
+                            '$imagePath${tvshow.posterPath}',
                             fit: BoxFit.cover,
                           ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Text(movie.title,
+                    Text(tvshow.name,
                         style: GoogleFonts.poppins(
                             fontSize: 20, fontWeight: FontWeight.w600),
                         maxLines: 2),
                     const SizedBox(height: 20),
-                    Text(movie.overview,
+                    Text(tvshow.overview,
                         style: GoogleFonts.poppins(
                             fontSize: 15, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
@@ -88,17 +86,15 @@ class DetailsScreen extends StatelessWidget {
                             style: GoogleFonts.poppins(
                                 fontSize: 15, fontWeight: FontWeight.w500)),
                         const Icon(Icons.star, color: Colors.amber),
-                        Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10"),
+                        Text(" ${tvshow.voteAverage.toStringAsFixed(1)} / 10"),
                         
                       ],
                     ),
-                    Text("Released on : ${movie.releaseDate.year}", style: GoogleFonts.poppins(
-                                fontSize: 15, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
 
                     ClipRRect(borderRadius: BorderRadius.circular(12),
                       child: SizedBox(height: 200,
-                        child: Image.network("$imagePath${movie.backdropPath}"),
+                        child: Image.network("$imagePath${tvshow.backdropPath}"),
                       ),
                     )
                     

@@ -11,13 +11,19 @@ var popularmovies;
 var topratedmovies;
 var upComingmovies;
 var nowPlayingmovies;
+var malayalamMovies;
+var animationMovies;
+var airTvshows;
 
 @override
   void onInit(){
+    airTvshows = getAirTvShows();
+    malayalamMovies = getMalayalamMovies();
     popularmovies = getPopularMovies();
     topratedmovies = getTopRatedMovies();
     upComingmovies = getUpcomingMovies();
     nowPlayingmovies = getNowPlayingMovies();
+    animationMovies = getAnimationMovies();
   
     super.onInit();
   }

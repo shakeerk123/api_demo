@@ -1,6 +1,8 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/profile/profile.dart';
+
+import 'package:api_demo/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +16,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List pages =[
     const HomeScreen(),
+    
     const ProfilePage(),
     const ProfilePage()
   ];
@@ -25,7 +28,7 @@ class _MainPageState extends State<MainPage> {
       body: Obx(() => pages[controller.currentIndex.value]),
       bottomNavigationBar:Obx(() =>  BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
-        backgroundColor: Colors.red,
+        backgroundColor: Colours.scaffoldBgColor,
         onTap: controller.onTap,
         currentIndex: controller.currentIndex.value,
         selectedItemColor: Colors.white,
@@ -37,7 +40,9 @@ class _MainPageState extends State<MainPage> {
         items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
         BottomNavigationBarItem(icon: Icon(Icons.search),label: "search"),
-        BottomNavigationBarItem(icon: Icon(Icons.person),label: "profile"),
+        BottomNavigationBarItem(icon: Icon(Icons.favorite),label: "favorite"),
+        
+      
       ]),
     ));
   }

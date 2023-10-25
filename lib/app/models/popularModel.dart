@@ -66,17 +66,17 @@ class Result {
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         adult: json["adult"],
-        backdropPath: json["backdrop_path"],
+        backdropPath: json["backdrop_path"] ?? "", 
         id: json["id"],
         title: json["title"],
         originalTitle: json["original_title"],
         overview: json["overview"],
-        posterPath: json["poster_path"],
+        posterPath: json["poster_path"] ?? "", 
         genreIds: List<int>.from(json["genre_ids"].map((x) => x)),
-        popularity: json["popularity"]?.toDouble(),
-        releaseDate: DateTime.parse(json["release_date"]),
+        popularity: json["popularity"]?.toDouble() ?? 0.0, 
+        releaseDate: json["release_date"] != null ? DateTime.parse(json["release_date"]) : DateTime.now(), 
         video: json["video"],
-        voteAverage: json["vote_average"]?.toDouble(),
+        voteAverage: json["vote_average"]?.toDouble() ?? 0.0, 
         voteCount: json["vote_count"],
       );
 }
