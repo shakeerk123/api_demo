@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class PopularMovieWidget extends StatelessWidget {
   const PopularMovieWidget({
@@ -29,7 +30,7 @@ class PopularMovieWidget extends StatelessWidget {
               if (snapshot.hasData) {
                 MovieDataModel? data = snapshot.data as MovieDataModel?;
                 List<Result> results = data?.results ?? [];
-                String poster = results[index].posterPath;
+                String poster = results[index].backdropPath;
 
                 return GestureDetector(
                   onTap: () {
@@ -48,10 +49,11 @@ class PopularMovieWidget extends StatelessWidget {
                         SizedBox(
                           height: 400,
                           width: MediaQuery.of(context).size.width * 0.75,
-                          child: Image.network(
-                            "$imagePath$poster",
-                            fit: BoxFit.cover,
-                          ),
+                          child: FadeInImage.memoryNetwork(
+                          image: "$imagePath$poster",
+                          placeholder: kTransparentImage,
+                          fit: BoxFit.cover,
+                        ),
                         ),
                         Positioned(
                           top: 8,

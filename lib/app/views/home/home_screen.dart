@@ -2,7 +2,8 @@
 import 'package:api_demo/widgets/home_widgets/animationmovies.dart';
 import 'package:api_demo/widgets/home_widgets/container_widget.dart';
 import 'package:api_demo/widgets/home_widgets/malayalam.dart';
-import 'package:api_demo/widgets/tv_shows/onairtvshows.dart';
+import 'package:api_demo/widgets/home_widgets/tamilconatiner.dart';
+import 'package:api_demo/widgets/home_widgets/tamilmovie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,6 +48,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             PopularMovieWidget(controller: controller),
             const SizedBox(height: 10),
+            
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text("Top Rated 🔥🔥 ",
@@ -73,7 +75,9 @@ class HomeScreen extends StatelessWidget {
                     style: GoogleFonts.kanit(fontSize: 20))),
            
             UpcomingMoviesWidget(controller: controller),
-            
+            const SizedBox(height: 10),
+            TamilContainerWidget(controller: controller),
+            const SizedBox(height: 10),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text("Now Playing 🌟",
@@ -82,9 +86,9 @@ class HomeScreen extends StatelessWidget {
             NowPlayingMoviesWidget(controller: controller),
             Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("On Air TV Shows ",
+                child: Text("Tamil Shows  🔥🔥 ",
                     style: GoogleFonts.kanit(fontSize: 20))),
-                    PopularTvShows(controller: controller)
+                    TamilMovie(controller: controller)
             
           ],
         ),

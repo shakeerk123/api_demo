@@ -1,6 +1,6 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/models/popularModel.dart';
-import 'package:api_demo/app/views/search/search_screen.dart';
+import 'package:api_demo/app/views/bottombar/main_page.dart';
 import 'package:api_demo/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colours.scaffoldBgColor,
         useMaterial3: true,
       ),
-      home:  SearchScreen(),
+      home:const  MainPage(),
     );
   }
 }

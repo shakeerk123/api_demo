@@ -4,6 +4,7 @@ import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MalayalamMovies extends StatelessWidget {
   const MalayalamMovies({
@@ -23,40 +24,48 @@ class MalayalamMovies extends StatelessWidget {
           List<Result> results = data?.results ?? [];
 
           return SizedBox(
-            height: 200,
-            width: double.infinity,
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                String poster = results[index].posterPath;
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            DetailsScreen(movie: results[index]),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: SizedBox(
-                        width: 120,
-                        child: Image.network("$imagePath$poster"),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          );
-       
-        }else{
+              height: 200,
+              width: double.infinity,
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    // ignore: unnecessary_null_comparison
+                    if (results[index].posterPath != null &&
+                        results[index].posterPath.isNotEmpty) {
+                      String poster = results[index].posterPath;
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailsScreen(movie: results[index]),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: SizedBox(
+                              width: 120,
+                              child: FadeInImage.memoryNetwork(
+                          image: "$imagePath$poster",
+                          placeholder: kTransparentImage,
+                          fit: BoxFit.cover,
+                        ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      // Increment the index to move to the next result
+                      return Container();
+                    }
+                  }));
+        } else {
           return Shimmer.fromColors(
             baseColor: Colors.grey.shade300,
             highlightColor: Colors.grey.shade100,

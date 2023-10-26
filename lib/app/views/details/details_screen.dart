@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,11 +9,9 @@ class DetailsScreen extends StatelessWidget {
   const DetailsScreen({
     Key? key,
     required this.movie,
-    
   }) : super(key: key);
 
   final Result movie;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -50,58 +46,79 @@ class DetailsScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [const SizedBox(height: 30),
-                      IconButton(onPressed: (){
+                  children: [
+                    const SizedBox(height: 30),
+                    IconButton(
+                      onPressed: () {
                         Navigator.pop(context);
-                      }, icon: const Icon(Icons.arrow_back_ios)),
-
+                      },
+                      icon: const Icon(Icons.arrow_back_ios),
+                    ),
                     Padding(
-                      padding:
-                          const EdgeInsets.only(top: 20, left: 20, right: 20),
+                      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: SizedBox(
                           width: double.infinity,
                           height: 400,
-                          child: Image.network(
-                            '$imagePath${movie.posterPath}',
-                            fit: BoxFit.cover,
-                          ),
+                          child: (movie.posterPath.isNotEmpty)
+                              ? Image.network(
+                                  '$imagePath${movie.posterPath}',
+                                  fit: BoxFit.cover,
+                                )
+                              : const Center(child: Text("No Image Available"),), 
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Text(movie.title,
-                        style: GoogleFonts.poppins(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                        maxLines: 2),
+                    Text(
+                      movie.title,
+                      style: GoogleFonts.poppins(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      maxLines: 2,
+                    ),
                     const SizedBox(height: 20),
-                    Text(movie.overview,
-                        style: GoogleFonts.poppins(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
+                    Text(
+                      movie.overview,
+                      style: GoogleFonts.poppins(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                     const SizedBox(height: 20),
-                    
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        Text("Rating ",
-                            style: GoogleFonts.poppins(
-                                fontSize: 15, fontWeight: FontWeight.w500)),
+                        Text(
+                          "Rating ",
+                          style: GoogleFonts.poppins(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         const Icon(Icons.star, color: Colors.amber),
                         Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10"),
-                        
                       ],
                     ),
-                    Text("Released on : ${movie.releaseDate.year}", style: GoogleFonts.poppins(
-                                fontSize: 15, fontWeight: FontWeight.w500)),
-                    const SizedBox(height: 20),
-
-                    ClipRRect(borderRadius: BorderRadius.circular(12),
-                      child: SizedBox(height: 200,
-                        child: Image.network("$imagePath${movie.backdropPath}"),
+                    Text(
+                      "Released on : ${movie.releaseDate.year}",
+                      style: GoogleFonts.poppins(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                       ),
-                    )
-                    
+                    ),
+                    const SizedBox(height: 20),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: (movie.backdropPath.isNotEmpty)
+                          ? SizedBox(
+                              height: 200,
+                              child: Image.network("$imagePath${movie.backdropPath}"),
+                            )
+                          : Center(child: Text("No Image Available"),), // Show a placeholder if image not found
+                    ),
                   ],
                 ),
               ),

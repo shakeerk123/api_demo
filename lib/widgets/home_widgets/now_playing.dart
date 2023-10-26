@@ -4,6 +4,7 @@ import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class NowPlayingMoviesWidget extends StatelessWidget {
   const NowPlayingMoviesWidget({
@@ -47,7 +48,11 @@ class NowPlayingMoviesWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: SizedBox(
                         width: 120,
-                        child: Image.network("$imagePath$poster"),
+                        child: FadeInImage.memoryNetwork(
+                          image: "$imagePath$poster",
+                          placeholder: kTransparentImage,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

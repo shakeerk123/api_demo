@@ -1,12 +1,13 @@
 import 'package:api_demo/app/controller/mainController.dart';
-import 'package:api_demo/app/models/tvshows_model.dart';
-import 'package:api_demo/app/views/details/tvshow_details.dart';
+import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:transparent_image/transparent_image.dart';
 
-class PopularTvShows extends StatelessWidget {
-  const PopularTvShows({
+class TamilMovie extends StatelessWidget {
+  const TamilMovie({
     super.key,
     required this.controller,
   });
@@ -16,11 +17,11 @@ class PopularTvShows extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: controller.airTvshows,
+      future: controller.tamilMovie,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
-          TvshowsDataModel? data = snapshot.data as TvshowsDataModel?;
-          List<Results> results = data?.results ?? [];
+          MovieDataModel? data = snapshot.data as MovieDataModel?;
+          List<Result> results = data?.results ?? [];
 
           return SizedBox(
             height: 200,
@@ -37,7 +38,7 @@ class PopularTvShows extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            TvShowDetailsScreen(tvshow: results[index]),
+                            DetailsScreen(movie: results[index]),
                       ),
                     );
                   },
@@ -47,7 +48,11 @@ class PopularTvShows extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: SizedBox(
                         width: 120,
-                        child: Image.network("$imagePath$poster"),
+                        child:FadeInImage.memoryNetwork(
+                          image: "$imagePath$poster",
+                          placeholder: kTransparentImage,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:transparent_image/transparent_image.dart';
 
-class UpcomingContainerWidget extends StatelessWidget {
-  const UpcomingContainerWidget({
+class TamilContainerWidget extends StatelessWidget {
+  const TamilContainerWidget({
     super.key,
     required this.controller,
   });
@@ -17,12 +17,12 @@ class UpcomingContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: controller.upComingmovies,
+      future: controller.tamilMovie,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         if (snapshot.hasData) {
           MovieDataModel? data = snapshot.data as MovieDataModel?;
           List<Result> results = data?.results ?? [];
-          String poster = results[6].backdropPath;
+          String poster = results[0].backdropPath;
           return Stack(
             children: [
               GestureDetector(onTap: () {
@@ -30,7 +30,7 @@ class UpcomingContainerWidget extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            DetailsScreen(movie: results[6]),
+                            DetailsScreen(movie: results[0]),
                       ),
                     );
                   },
@@ -58,7 +58,7 @@ class UpcomingContainerWidget extends StatelessWidget {
                         baseColor: Colors.white,
                         highlightColor: Colors.grey,
                         child: const Text(
-                          "UPCOMING",
+                          "HITS TAMIL",
                           style: TextStyle(
                               fontSize: 7, fontWeight: FontWeight.w600),
                         ),

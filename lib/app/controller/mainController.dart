@@ -1,36 +1,42 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, file_names
 
-// ignore_for_file: file_names, prefer_typing_uninitialized_variables
 
-import 'package:api_demo/app/api/api_services.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:api_demo/app/api/api_services.dart';
 
-class MainController extends GetxController{
+class MainController extends GetxController {
+TextEditingController searchTextField = TextEditingController();
 
-var currentIndex = 0.obs;
-var popularmovies;
-var topratedmovies;
-var upComingmovies;
-var nowPlayingmovies;
-var malayalamMovies;
-var animationMovies;
-var airTvshows;
+  var currentIndex = 0.obs;
+  
+  var popularmovies;
+  var topratedmovies;
+  var upComingmovies;
+  var nowPlayingmovies;
+  var malayalamMovies;
+  var animationMovies;
+  var tamilMovie;
+  var searchMovie;
 
-@override
-  void onInit(){
-    airTvshows = getAirTvShows();
+  
+
+  @override
+  void onInit() {
+    
+    tamilMovie = getTamilMovie();
     malayalamMovies = getMalayalamMovies();
     popularmovies = getPopularMovies();
     topratedmovies = getTopRatedMovies();
     upComingmovies = getUpcomingMovies();
     nowPlayingmovies = getNowPlayingMovies();
     animationMovies = getAnimationMovies();
-  
+
     super.onInit();
   }
 
-void onTap(int index){
-  currentIndex.value = index ;
-}
-
-
+  void onTap(int index) {
+    currentIndex.value = index;
+  }
+   
 }
