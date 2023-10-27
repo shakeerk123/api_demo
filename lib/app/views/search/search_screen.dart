@@ -16,15 +16,7 @@ class SearchScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 40),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 9),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back_ios),
-            ),
-          ),
+          
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Card(
@@ -33,6 +25,9 @@ class SearchScreen extends StatelessWidget {
                 child: TextField(
                   controller: controller.searchTextField,
                   decoration: InputDecoration(
+                    prefixIcon: IconButton(onPressed: () {  
+                      Navigator.pop(context);
+                    }, icon: Icon(Icons.arrow_back_ios),),
                     suffixIcon: IconButton(
                       onPressed: () {
                         String query = controller.searchTextField.text;

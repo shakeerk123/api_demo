@@ -1,5 +1,8 @@
 import 'dart:ui';
+import 'package:api_demo/app/controller/fav_controller.dart';
+import 'package:api_demo/app/controller/mainController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:api_demo/app/models/popularModel.dart';
@@ -15,6 +18,8 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(FavoriteController());
+
     return Scaffold(
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -55,7 +60,8 @@ class DetailsScreen extends StatelessWidget {
                       icon: const Icon(Icons.arrow_back_ios),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                      padding:
+                          const EdgeInsets.only(top: 20, left: 20, right: 20),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: SizedBox(
@@ -66,18 +72,38 @@ class DetailsScreen extends StatelessWidget {
                                   '$imagePath${movie.posterPath}',
                                   fit: BoxFit.cover,
                                 )
-                              : const Center(child: Text("No Image Available"),), 
+                              : const Center(
+                                  child: Text("No Image Available"),
+                                ),
                         ),
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Text(
-                      movie.title,
-                      style: GoogleFonts.poppins(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      maxLines: 2,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          movie.title,
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          maxLines: 2,
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            controller.toggleFavorite(movie);
+                            
+                          },
+                          icon: Obx(() => Icon(
+                                controller.favoriteMovies.contains(movie)
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: Colors.red,
+                                size: 30,
+                              )),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 20),
                     Text(
@@ -115,9 +141,12 @@ class DetailsScreen extends StatelessWidget {
                       child: (movie.backdropPath.isNotEmpty)
                           ? SizedBox(
                               height: 200,
-                              child: Image.network("$imagePath${movie.backdropPath}"),
+                              child: Image.network(
+                                  "$imagePath${movie.backdropPath}"),
                             )
-                          : const Center(child: Text("No Image Available"),), // Show a placeholder if image not found
+                          : const Center(
+                              child: Text("No Image Available"),
+                            ), // Show a placeholder if image not found
                     ),
                   ],
                 ),

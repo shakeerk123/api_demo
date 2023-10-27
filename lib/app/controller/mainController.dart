@@ -2,12 +2,14 @@
 
 
 
+import 'package:api_demo/app/models/popularModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:api_demo/app/api/api_services.dart';
 
 class MainController extends GetxController {
 TextEditingController searchTextField = TextEditingController();
+ List<Result> favoriteMovies = [] ;
 
   var currentIndex = 0.obs;
   
@@ -40,4 +42,12 @@ TextEditingController searchTextField = TextEditingController();
     currentIndex.value = index;
   }
    
+   void toggleFavorite(Result movie) {
+  if (favoriteMovies.contains(movie)) {
+    favoriteMovies.remove(movie);
+  } else {
+    favoriteMovies.add(movie);
+  }
+}
+
 }

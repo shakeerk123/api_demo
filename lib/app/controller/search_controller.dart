@@ -44,7 +44,7 @@ class SearchMovieController extends GetxController {
       }
     } catch (e) {
       isLoading(false); // Set loading to false on error
-      Get.snackbar('Error', 'An error occurred while loading data');
+      Get.snackbar('Keep Patient', 'Results are Loading...wait');
     }
   }
 }

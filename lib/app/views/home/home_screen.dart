@@ -7,9 +7,6 @@ import 'package:api_demo/widgets/home_widgets/tamilconatiner.dart';
 import 'package:api_demo/widgets/home_widgets/tamilmovie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:shimmer/shimmer.dart';
-
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/widgets/home_widgets/now_playing.dart';
 import 'package:api_demo/widgets/home_widgets/popular_widget.dart';
@@ -27,20 +24,18 @@ class HomeScreen extends StatelessWidget {
         leading: const Icon(Icons.menu),
         toolbarHeight: 70,
         backgroundColor: Colors.transparent,
-        actions:[
+        actions: [
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: IconButton(onPressed: () {  
-              Get.to(SearchScreen());
-            }, icon: const Icon(Icons.search),),
+            child: IconButton(
+              onPressed: () {
+                Get.to(SearchScreen());
+              },
+              icon: const Icon(Icons.search),
+            ),
           )
         ],
-        title: Shimmer.fromColors(
-          period: const Duration(milliseconds: 4000),
-          baseColor: Colors.grey,
-          highlightColor: Colors.white,
-          child: Image.asset("assets/cinemaven.png", height: 50),
-        ),
+        title: Image.asset("assets/cinemaven.png", height: 50),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -51,48 +46,18 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             PopularMovieWidget(controller: controller),
             const SizedBox(height: 10),
-            
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Top Rated 🔥🔥 ",
-                    style: GoogleFonts.kanit(fontSize: 20))),
             TopRatedMoviesWidget(controller: controller),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Animated movies 🍿 ",
-                    style: GoogleFonts.kanit(fontSize: 20))),
             AnimatedMovies(controller: controller),
             const SizedBox(height: 10),
             UpcomingContainerWidget(controller: controller),
             const SizedBox(height: 10),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Malayalam movies 👨‍👩‍👧‍👦",
-                    style: GoogleFonts.kanit(fontSize: 20))),
-            
             MalayalamMovies(controller: controller),
-            
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Upcoming Movies 📅 ",
-                    style: GoogleFonts.kanit(fontSize: 20))),
-           
             UpcomingMoviesWidget(controller: controller),
             const SizedBox(height: 10),
             TamilContainerWidget(controller: controller),
             const SizedBox(height: 10),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Now Playing 🌟",
-                    style: GoogleFonts.kanit(fontSize: 20))),
-           
             NowPlayingMoviesWidget(controller: controller),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text("Tamil Shows  🔥🔥 ",
-                    style: GoogleFonts.kanit(fontSize: 20))),
-                    TamilMovie(controller: controller)
-            
+            TamilMovie(controller: controller)
           ],
         ),
       ),
