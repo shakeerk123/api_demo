@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_demo/app/views/search/search_screen.dart';
 import 'package:api_demo/widgets/home_widgets/animationmovies.dart';
 import 'package:api_demo/widgets/home_widgets/container_widget.dart';
 import 'package:api_demo/widgets/home_widgets/malayalam.dart';
@@ -26,10 +27,12 @@ class HomeScreen extends StatelessWidget {
         leading: const Icon(Icons.menu),
         toolbarHeight: 70,
         backgroundColor: Colors.transparent,
-        actions: const [
+        actions:[
           Padding(
-            padding: EdgeInsets.all(12.0),
-            child: Icon(Icons.search),
+            padding: const EdgeInsets.all(12.0),
+            child: IconButton(onPressed: () {  
+              Get.to(SearchScreen());
+            }, icon: const Icon(Icons.search),),
           )
         ],
         title: Shimmer.fromColors(

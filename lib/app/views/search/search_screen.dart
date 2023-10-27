@@ -13,10 +13,17 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 40,
+          const SizedBox(height: 40),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 9),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -43,11 +50,6 @@ class SearchScreen extends StatelessWidget {
           ),
           Expanded(
             child: Obx(() {
-              if (controller.isLoading.value) {
-                return const Center(
-                  child: CircularProgressIndicator(), // Loading indicator
-                );
-              }
               final searchResults = controller.searchResults;
 
               if (searchResults.isEmpty) {
@@ -56,7 +58,8 @@ class SearchScreen extends StatelessWidget {
                 );
               }
 
-              return SearchGridViewWidget(controller: controller, searchResults: searchResults);
+              return SearchGridViewWidget(
+                  controller: controller, searchResults: searchResults);
             }),
           ),
         ],
@@ -64,4 +67,3 @@ class SearchScreen extends StatelessWidget {
     );
   }
 }
-

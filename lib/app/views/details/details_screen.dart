@@ -117,7 +117,7 @@ class DetailsScreen extends StatelessWidget {
                               height: 200,
                               child: Image.network("$imagePath${movie.backdropPath}"),
                             )
-                          : Center(child: Text("No Image Available"),), // Show a placeholder if image not found
+                          : const Center(child: Text("No Image Available"),), // Show a placeholder if image not found
                     ),
                   ],
                 ),
