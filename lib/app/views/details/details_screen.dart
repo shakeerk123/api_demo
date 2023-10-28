@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:api_demo/app/controller/fav_controller.dart';
-import 'package:api_demo/app/models/hive_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,19 +77,18 @@ class DetailsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
                     IconButton(
-                            onPressed: () {
-                              controller.toggleFavorite(movie);
-                              
-                            },
-                            icon: Obx(() => Icon(
-                                controller.favoriteMovies.contains(movie)
-                                    ? Icons.favorite
-                                    : Icons.favorite_border,
-                                color: Colors.red,
-                                size: 30))),
-
-
-
+                      onPressed: () {
+                        controller.toggleFavorite(movie.title);
+                      },
+                      icon: Obx(() {
+                        final isFavorite = controller.isFavorite(movie.title);
+                        return Icon(
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: Colors.red,
+                          size: 30,
+                        );
+                      }),
+                    ),
                     Text(movie.title,
                         style: GoogleFonts.poppins(
                             fontSize: 20, fontWeight: FontWeight.w600),

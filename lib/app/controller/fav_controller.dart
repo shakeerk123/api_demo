@@ -1,20 +1,34 @@
 import 'package:get/get.dart';
-import 'package:api_demo/app/models/popularModel.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoriteController extends GetxController {
-  var favoriteMovies = <Result>[].obs;
+  final RxList<String> favoriteTitles = <String>[].obs;
 
-  void toggleFavorite(Result movie) async{
-    final box = await Hive.openBox<String>('movieBox');
-    if (favoriteMovies.contains(movie)) {
-      box.add(movie.title);
+  Future<void> toggleFavorite(String title) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (favoriteTitles.contains(title)) {
+      favoriteTitles.remove(title);
     } else {
-      box.delete(movie.title);
+      favoriteTitles.add(title);
     }
+
+    await prefs.setStringList('favorite_titles', favoriteTitles);
   }
 
-  bool isFavorite(Result movie) {
-    return favoriteMovies.contains(movie);
+  bool isFavorite(String title) {
+    return favoriteTitles.contains(title);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadFavoriteTitles();
+  }
+
+  Future<void> loadFavoriteTitles() async {
+    final prefs = await SharedPreferences.getInstance();
+    final storedTitles = prefs.getStringList('favorite_titles') ?? [];
+    favoriteTitles.assignAll(storedTitles);
   }
 }

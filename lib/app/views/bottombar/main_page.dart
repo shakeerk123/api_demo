@@ -1,6 +1,6 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/views/home/home_screen.dart';
-import 'package:api_demo/app/views/profile/profile.dart';
+import 'package:api_demo/app/views/favourites/fav_screen.dart';
 import 'package:api_demo/app/views/search/search_screen.dart';
 
 import 'package:api_demo/utils/colors.dart';
@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [const HomeScreen(),  SearchScreen(),  const FavoritesScreen()];
+  List pages = [const HomeScreen(),  SearchScreen(),   const FavoritesScreen()];
 
   @override
   Widget build(BuildContext context) {
