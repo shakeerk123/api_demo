@@ -1,10 +1,8 @@
 import 'dart:ui';
 import 'package:api_demo/app/controller/fav_controller.dart';
-import 'package:api_demo/app/controller/mainController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:api_demo/app/models/popularModel.dart';
 import 'package:api_demo/utils/api_const.dart';
 
@@ -39,9 +37,8 @@ class DetailsScreen extends StatelessWidget {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.2),
-                  ),
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.2)),
                 ),
               ),
             ),
@@ -79,62 +76,41 @@ class DetailsScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          movie.title,
-                          style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          maxLines: 2,
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            controller.toggleFavorite(movie);
-                            
-                          },
-                          icon: Obx(() => Icon(
+                    IconButton(
+                            onPressed: () {
+                              controller.toggleFavorite(movie);
+                            },
+                            icon: Obx(() => Icon(
                                 controller.favoriteMovies.contains(movie)
                                     ? Icons.favorite
                                     : Icons.favorite_border,
                                 color: Colors.red,
-                                size: 30,
-                              )),
-                        ),
-                      ],
-                    ),
+                                size: 30))),
+
+
+
+                    Text(movie.title,
+                        style: GoogleFonts.poppins(
+                            fontSize: 20, fontWeight: FontWeight.w600),
+                        maxLines: 1),
                     const SizedBox(height: 20),
-                    Text(
-                      movie.overview,
-                      style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    Text(movie.overview,
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
                     const SizedBox(height: 20),
                     Row(
                       children: [
-                        Text(
-                          "Rating ",
-                          style: GoogleFonts.poppins(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        Text("Rating ",
+                            style: GoogleFonts.poppins(
+                                fontSize: 15, fontWeight: FontWeight.w500)),
                         const Icon(Icons.star, color: Colors.amber),
                         Text(" ${movie.voteAverage.toStringAsFixed(1)} / 10"),
                       ],
                     ),
-                    Text(
-                      "Released on : ${movie.releaseDate.year}",
-                      style: GoogleFonts.poppins(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    Text("Released on : ${movie.releaseDate.year}",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
@@ -142,11 +118,8 @@ class DetailsScreen extends StatelessWidget {
                           ? SizedBox(
                               height: 200,
                               child: Image.network(
-                                  "$imagePath${movie.backdropPath}"),
-                            )
-                          : const Center(
-                              child: Text("No Image Available"),
-                            ), // Show a placeholder if image not found
+                                  "$imagePath${movie.backdropPath}"))
+                          : const Center(child: Text("No Image Available")),
                     ),
                   ],
                 ),

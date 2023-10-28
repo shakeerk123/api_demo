@@ -1,7 +1,7 @@
 import 'package:api_demo/app/controller/mainController.dart';
 import 'package:api_demo/app/models/popularModel.dart';
-import 'package:api_demo/app/views/bottombar/main_page.dart';
 import 'package:api_demo/utils/colors.dart';
+import 'package:api_demo/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,13 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
+      initialRoute: "/",
+      getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
       title: 'Cinemaven',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colours.scaffoldBgColor,
         useMaterial3: true,
       ),
-      home:const  MainPage(),
+     
     );
   }
 }

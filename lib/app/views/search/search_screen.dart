@@ -1,7 +1,6 @@
 import 'package:api_demo/widgets/search_widgets/search_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../controller/search_controller.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -16,43 +15,32 @@ class SearchScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 40),
-          
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 9),
-                child: TextField(
-                  controller: controller.searchTextField,
-                  decoration: InputDecoration(
-                    prefixIcon: IconButton(onPressed: () {  
-                      Navigator.pop(context);
-                    }, icon: Icon(Icons.arrow_back_ios),),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        String query = controller.searchTextField.text;
-                        controller.searchMovies(query);
-                      },
-                      icon: const Icon(Icons.send),
-                      color: Colors.white70,
-                    ),
-                    border: InputBorder.none,
-                    hintText: 'Search for movies',
-                  ),
-                ),
-              ),
-            ),
-          ),
+              padding: const EdgeInsets.all(16.0),
+              child: Card(
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 9),
+                      child: TextField(
+                        controller: controller.searchTextField,
+                        decoration: InputDecoration(
+                            
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  String query =
+                                      controller.searchTextField.text;
+                                  controller.searchMovies(query);
+                                },
+                                icon: const Icon(Icons.send),
+                                color: Colors.white70),
+                            border: InputBorder.none,
+                            hintText: 'Search for movies'),
+                      )))),
           Expanded(
             child: Obx(() {
               final searchResults = controller.searchResults;
-
               if (searchResults.isEmpty) {
-                return const Center(
-                  child: Text('No search results found'),
-                );
+                return const Center(child: Text('No search results found'));
               }
-
               return SearchGridViewWidget(
                   controller: controller, searchResults: searchResults);
             }),

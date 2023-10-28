@@ -4,6 +4,7 @@ import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:shimmer/shimmer.dart';
@@ -39,17 +40,14 @@ class PopularMovieWidget extends StatelessWidget {
                     String text = title;
                     List<String> words = text.split(' ');
                     String titleMain = words.take(3).join(' ');
-
+                    // ignore: unnecessary_null_comparison
+                    if (poster == null || poster.isEmpty) {
+                      return const SizedBox.shrink();
+                    }
 
                     return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  DetailsScreen(movie: results[index]),
-                            ),
-                          );
+                          Get.to(() => DetailsScreen(movie: results[index]));
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(4),
@@ -79,10 +77,11 @@ class PopularMovieWidget extends StatelessWidget {
                                   child: Shimmer.fromColors(
                                     baseColor: Colors.white,
                                     highlightColor: Colors.grey,
-                                    child:  Text(
-                                    titleMain,maxLines: 1,
-                                      style:GoogleFonts.metalMania(fontSize: 30,fontWeight: FontWeight.w900)
-                                    ),
+                                    child: Text(titleMain,
+                                        maxLines: 1,
+                                        style: GoogleFonts.metalMania(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w900)),
                                   ),
                                 ),
                               ),

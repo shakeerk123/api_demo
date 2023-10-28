@@ -4,18 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FavoritesScreen extends StatelessWidget {
+  const FavoritesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
    var controller = Get.put(FavoriteController());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite Movies'),
+        title: const Text('Favorite Movies'),
       ),
       body: Obx(() {
         final favoriteMovies = controller.favoriteMovies;
         if (favoriteMovies.isEmpty) {
-          return Center(
+          return const Center(
             child: Text('You have no favorite movies.'),
           );
         } else {

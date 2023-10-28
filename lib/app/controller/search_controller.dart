@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +11,6 @@ class SearchMovieController extends GetxController {
   final baseUrl = 'https://api.themoviedb.org/3/search/movie';
   String currentQuery = '';
   final isLoading = false.obs;
-
 
   Future<void> searchMovies(String query, {int page = 1}) async {
     isLoading(true); // Set loading to true when fetching data
@@ -33,8 +31,7 @@ class SearchMovieController extends GetxController {
 
         searchResults.addAll(results
             .map((result) => Result.fromJson(result))
-            .where((result) =>
-                result.posterPath.isNotEmpty));
+            .where((result) => result.posterPath.isNotEmpty));
 
         isLoading(false); // Set loading to false when data is loaded
         update();

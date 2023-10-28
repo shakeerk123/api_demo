@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [const HomeScreen(),  SearchScreen(),  FavoritesScreen()];
+  List pages = [const HomeScreen(),  SearchScreen(),  const FavoritesScreen()];
 
   @override
   Widget build(BuildContext context) {
