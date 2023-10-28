@@ -35,11 +35,4 @@ class MainController extends GetxController {
     currentIndex.value = index;
   }
 
-  void toggleFavorite(Result movie) {
-    if (favoriteMovies.contains(movie)) {
-      favoriteMovies.remove(movie);
-    } else {
-      favoriteMovies.add(movie);
-    }
-  }
 }

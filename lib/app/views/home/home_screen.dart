@@ -1,5 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_demo/app/views/bottombar/main_page.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_firs
 import 'package:api_demo/widgets/home_widgets/movie_category_widget.dart';
 import 'package:api_demo/widgets/home_widgets/container_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,26 +29,26 @@ class HomeScreen extends StatelessWidget {
             PopularMovieWidget(controller: controller),
             const SizedBox(height: 10),
             MoviesCategory(
-                title: "Top Rated",
+                title: "Top Rated 🔥",
                 fetchMovies: () => controller.topratedmovies,
                 controller: controller),
             MoviesCategory(
-                title: "Animated",
+                title: "Animated 🍫",
                 fetchMovies: () => controller.animationMovies,
                 controller: controller),
             const SizedBox(height: 10),
             ContainerWidget(
               controller: controller,
-              title: 'UPCOMING',
+              title: 'UPCOMING 🍿',
               fetchMovies: () => controller.upComingmovies,
             ),
             const SizedBox(height: 10),
             MoviesCategory(
-                title: "Malayalam",
+                title: "Malayalam ❄️",
                 fetchMovies: () => controller.malayalamMovies,
                 controller: controller),
             MoviesCategory(
-                title: "Upcoming",
+                title: "Upcoming ",
                 fetchMovies: () => controller.upComingmovies,
                 controller: controller),
             const SizedBox(height: 10),

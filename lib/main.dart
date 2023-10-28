@@ -5,8 +5,14 @@ import 'package:api_demo/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+ WidgetsFlutterBinding.ensureInitialized();
+
+ //await Hive.initFlutter();
+ //var appDocumentDirectory = await getApplicationDocumentsDirectory();
+ //Hive.init(appDocumentDirectory.path);
+ 
   runApp( const MyApp());
 }
 

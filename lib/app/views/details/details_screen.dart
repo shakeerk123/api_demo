@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:api_demo/app/controller/fav_controller.dart';
+import 'package:api_demo/app/models/hive_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,6 +80,7 @@ class DetailsScreen extends StatelessWidget {
                     IconButton(
                             onPressed: () {
                               controller.toggleFavorite(movie);
+                              
                             },
                             icon: Obx(() => Icon(
                                 controller.favoriteMovies.contains(movie)
