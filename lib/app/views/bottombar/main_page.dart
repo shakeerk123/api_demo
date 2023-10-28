@@ -1,4 +1,4 @@
-import 'package:api_demo/app/controller/mainController.dart';
+import 'package:api_demo/app/controller/main_controller.dart';
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/favourites/fav_screen.dart';
 import 'package:api_demo/app/views/search/search_screen.dart';
@@ -24,7 +24,7 @@ class _MainPageState extends State<MainPage> {
         body: Obx(() => pages[controller.currentIndex.value]),
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
-              type: BottomNavigationBarType.shifting,
+              
               backgroundColor: Colours.scaffoldBgColor,
               onTap: controller.onTap,
               currentIndex: controller.currentIndex.value,

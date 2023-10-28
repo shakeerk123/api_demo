@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/utils/api_const.dart';
 
 class SearchMovieController extends GetxController {

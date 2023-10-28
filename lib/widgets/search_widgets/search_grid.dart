@@ -1,5 +1,5 @@
 import 'package:api_demo/app/controller/search_controller.dart';
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,5 +1,5 @@
-import 'package:api_demo/app/controller/mainController.dart';
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/controller/main_controller.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/app/views/details/details_screen.dart';
 import 'package:api_demo/utils/api_const.dart';
 import 'package:carousel_slider/carousel_slider.dart';

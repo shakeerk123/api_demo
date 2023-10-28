@@ -1,8 +1,10 @@
 import 'dart:developer';
 import 'package:api_demo/utils/api_const.dart';
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
+var _hindiLink =
+    "$baseURL/discover/movie?api_key=$apiKey&language=hi&with_original_language=hi";
 var _trendingLink = '$baseURL/trending/movie/day?api_key=$apiKey';
 var _topRatedLink = '$baseURL/movie/top_rated?api_key=$apiKey';
 var _upcomingLink = '$baseURL/movie/upcoming?api_key=$apiKey';
@@ -22,6 +24,10 @@ Future<MovieDataModel> _fetchMovieData(String url) async {
   } else {
     throw Exception('Failed to load movie data');
   }
+}
+
+Future<MovieDataModel> getHindiMovies() async {
+  return await _fetchMovieData(_hindiLink);
 }
 
 Future<MovieDataModel> getTamilMovie() async {

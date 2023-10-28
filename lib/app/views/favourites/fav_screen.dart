@@ -1,6 +1,7 @@
 import 'package:api_demo/app/controller/fav_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -41,9 +42,13 @@ class FavoritesScreen extends StatelessWidget {
                   onDismissed: (direction) {
                     controller.toggleFavorite(title);
                   },
-                  child: Card(
-                    child: ListTile(
-                      title: Text(title),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                    child: Card(
+                      child: ListTile(
+                        trailing: Text("<<< delete",style: GoogleFonts.raleway(fontSize: 6),),
+                        title: Text(title),
+                      ),
                     ),
                   ),
                 );

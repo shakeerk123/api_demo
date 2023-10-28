@@ -3,7 +3,7 @@ import 'package:api_demo/app/controller/fav_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/utils/api_const.dart';
 
 class DetailsScreen extends StatelessWidget {

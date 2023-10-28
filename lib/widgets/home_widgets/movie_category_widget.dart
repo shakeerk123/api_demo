@@ -3,8 +3,8 @@ import 'package:api_demo/utils/api_const.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:api_demo/app/controller/mainController.dart';
-import 'package:api_demo/app/models/popularModel.dart';
+import 'package:api_demo/app/controller/main_controller.dart';
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MoviesCategory extends StatelessWidget {
