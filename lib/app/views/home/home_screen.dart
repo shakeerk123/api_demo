@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_firs
-import 'package:api_demo/app/views/favourites/fav_screen.dart';
 import 'package:api_demo/widgets/home_widgets/movie_category_widget.dart';
 import 'package:api_demo/widgets/home_widgets/container_widget.dart';
 import 'package:flutter/material.dart';
@@ -73,7 +72,6 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       endDrawer: Drawer(
-        // Add an inner endDrawer
         child: ListView(
           children: [
             const UserAccountsDrawerHeader(

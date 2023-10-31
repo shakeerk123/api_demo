@@ -7,10 +7,7 @@ import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/utils/api_const.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({
-    Key? key,
-    required this.movie,
-  }) : super(key: key);
+  const DetailsScreen({Key? key, required this.movie}) : super(key: key);
 
   final Result movie;
 
@@ -60,20 +57,17 @@ class DetailsScreen extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(top: 20, left: 20, right: 20),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 400,
-                          child: (movie.posterPath.isNotEmpty)
-                              ? Image.network(
-                                  '$imagePath${movie.posterPath}',
-                                  fit: BoxFit.cover,
-                                )
-                              : const Center(
-                                  child: Text("No Image Available"),
-                                ),
-                        ),
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          child: SizedBox(
+                              width: double.infinity,
+                              height: 400,
+                              child: (movie.posterPath.isNotEmpty)
+                                  ? Image.network(
+                                      '$imagePath${movie.posterPath}',
+                                      fit: BoxFit.cover,
+                                    )
+                                  : const Center(
+                                      child: Text("No Image Available")))),
                     ),
                     const SizedBox(height: 20),
                     IconButton(

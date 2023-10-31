@@ -45,6 +45,7 @@ dependencies:
   transparent_image: ^2.0.1
   shared_preferences: ^2.2.2
   flutter_inner_drawer: ^1.0.0+1
+  intro_screen_onboarding_flutter: ^1.0.0
   
   
 

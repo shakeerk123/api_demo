@@ -1,5 +1,4 @@
 
-//
 //     final movieDataModel = movieDataModelFromJson(jsonString);
 
 // ignore_for_file: file_names
