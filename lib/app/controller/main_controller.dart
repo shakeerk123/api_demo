@@ -1,13 +1,17 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, file_names
 
+import 'package:api_demo/app/models/cast_model.dart';
+import 'package:api_demo/app/models/movie_detail_model.dart';
 import 'package:api_demo/app/models/movie_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:api_demo/app/api/api_services.dart';
 
-class MainController extends GetxController {
+class MovieController extends GetxController {
+  ApiClient apiClient = ApiClient();
   TextEditingController searchTextField = TextEditingController();
   List<Result> favoriteMovies = [];
+
 
   var currentIndex = 0.obs;
   var popularmovies;
@@ -19,22 +23,27 @@ class MainController extends GetxController {
   var tamilMovie;
   var searchMovie;
   var hindiMovie;
+  var getMovieCast;
+
+
+
 
   @override
   void onInit() {
-    hindiMovie = getHindiMovies();
-    tamilMovie = getTamilMovie();
-    malayalamMovies = getMalayalamMovies();
-    popularmovies = getPopularMovies();
-    topratedmovies = getTopRatedMovies();
-    upComingmovies = getUpcomingMovies();
-    nowPlayingmovies = getNowPlayingMovies();
-    animationMovies = getAnimationMovies();
+    hindiMovie =apiClient.getHindiMovies();
+    tamilMovie =apiClient. getTamilMovie();
+    malayalamMovies =apiClient. getMalayalamMovies();
+    popularmovies =apiClient.getPopularMovies();
+    topratedmovies =apiClient. getTopRatedMovies();
+    upComingmovies =apiClient. getUpcomingMovies();
+    nowPlayingmovies =apiClient. getNowPlayingMovies();
+    animationMovies =apiClient. getAnimationMovies();
+    
     super.onInit();
   }
 
   void onTap(int index) {
     currentIndex.value = index;
   }
-
+ 
 }

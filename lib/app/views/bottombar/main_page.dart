@@ -1,4 +1,5 @@
 import 'package:api_demo/app/controller/main_controller.dart';
+
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/favourites/fav_screen.dart';
 import 'package:api_demo/app/views/search/search_screen.dart';
@@ -19,7 +20,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final MainController controller = Get.put(MainController());
+    final MovieController controller = Get.put(MovieController());
     return Scaffold(
         body: Obx(() => pages[controller.currentIndex.value]),
         bottomNavigationBar: Obx(

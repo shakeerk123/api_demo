@@ -10,7 +10,7 @@ import 'package:transparent_image/transparent_image.dart';
 class MoviesCategory extends StatelessWidget {
   final String title;
   final Future<MovieDataModel> Function() fetchMovies;
-  final MainController controller;
+  final MovieController controller;
 
   const MoviesCategory({
     Key? key,

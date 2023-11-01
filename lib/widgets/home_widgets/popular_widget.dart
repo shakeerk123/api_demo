@@ -16,7 +16,7 @@ class PopularMovieWidget extends StatelessWidget {
     required this.controller,
   });
 
-  final MainController controller;
+  final MovieController controller;
 
   @override
   Widget build(BuildContext context) {

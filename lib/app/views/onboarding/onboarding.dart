@@ -25,7 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
         titleTextStyle: GoogleFonts.raleway(fontSize: 20,fontWeight: FontWeight.bold),
         imageUrl: 'assets/movie3.png',
         title: TextConstants.onBoarding3,
-        subTitle: TextConstants.onBoardingmsg3),
+        subTitle: TextConstants.onBoardingmsg3), 
   ];
 
   OnBoardingScreen({super.key});

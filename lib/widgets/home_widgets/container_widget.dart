@@ -11,7 +11,7 @@ class ContainerWidget extends StatelessWidget {
   final String title;
 
   final Future<MovieDataModel> Function() fetchMovies;
-  final MainController controller;
+  final MovieController controller;
 
   const ContainerWidget({
     Key? key,

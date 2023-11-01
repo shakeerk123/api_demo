@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(MainController());
+    var controller = Get.put(MovieController());
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 70,

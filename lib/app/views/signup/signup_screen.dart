@@ -55,7 +55,9 @@ class SignupScreen extends GetView<SignupController> {
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () => {}),
+                          recognizer: TapGestureRecognizer()..onTap = ()  {
+                            
+                          }),
                     ],
                   ),
                 ),

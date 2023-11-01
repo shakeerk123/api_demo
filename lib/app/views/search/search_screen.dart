@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '../../controller/search_controller.dart';
 
 class SearchScreen extends StatelessWidget {
-  final SearchMovieController controller = Get.put(SearchMovieController());
-
   SearchScreen({super.key});
+
+  final SearchMovieController controller = Get.put(SearchMovieController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,6 @@ class SearchScreen extends StatelessWidget {
                       child: TextField(
                         controller: controller.searchTextField,
                         decoration: InputDecoration(
-                            
                             suffixIcon: IconButton(
                                 onPressed: () {
                                   String query =

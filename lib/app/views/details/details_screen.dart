@@ -1,19 +1,22 @@
 import 'dart:ui';
 import 'package:api_demo/app/controller/fav_controller.dart';
+import 'package:api_demo/app/controller/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:api_demo/app/models/movie_model.dart';
 import 'package:api_demo/utils/api_const.dart';
 
+// ignore: must_be_immutable
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key, required this.movie}) : super(key: key);
-
+   DetailsScreen({Key? key, required this.movie}) : super(key: key);
+var controller = Get.put(FavoriteController());
+MovieController movieController = Get.put(MovieController());
   final Result movie;
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(FavoriteController());
+    
 
     return Scaffold(
       body: SizedBox(
@@ -115,6 +118,7 @@ class DetailsScreen extends StatelessWidget {
                                   "$imagePath${movie.backdropPath}"))
                           : const Center(child: Text("No Image Available")),
                     ),
+          
                   ],
                 ),
               ),
