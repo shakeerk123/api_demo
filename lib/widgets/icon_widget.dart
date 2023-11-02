@@ -10,7 +10,7 @@ class IconWidget extends StatelessWidget {
     return ImageIcon(
       AssetImage(iconPath),
       size: iconSize,
-      color: Theme.of(context).primaryTextTheme.bodyText1?.color,
+      color: Theme.of(context).primaryTextTheme.bodyLarge?.color,
     );
   }
 }

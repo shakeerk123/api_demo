@@ -69,7 +69,7 @@ class SignupScreen extends GetView<SignupController> {
                   obscureText: false,
                   hintText: 'Full Name',
                   keyboardType: TextInputType.name,
-                  prefixIconPath: Icon(
+                  prefixIconPath: const Icon(
                     Icons.person,
                     color: Colors.black,
                   ),
@@ -82,7 +82,7 @@ class SignupScreen extends GetView<SignupController> {
                   obscureText: false,
                   hintText: 'Email',
                   keyboardType: TextInputType.emailAddress,
-                  prefixIconPath: Icon(
+                  prefixIconPath: const Icon(
                     Icons.email,
                     color: Colors.black,
                   ),
@@ -95,7 +95,7 @@ class SignupScreen extends GetView<SignupController> {
                   obscureText: true,
                   hintText: 'Password',
                   keyboardType: TextInputType.text,
-                  prefixIconPath: Icon(
+                  prefixIconPath: const Icon(
                     Icons.lock,
                     color: Colors.black,
                   ),

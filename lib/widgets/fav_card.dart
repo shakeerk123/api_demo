@@ -1,5 +1,3 @@
-import 'package:api_demo/utils/colors.dart';
-import 'package:api_demo/widgets/icon_widget.dart';
 import 'package:api_demo/widgets/text1.dart';
 import 'package:api_demo/widgets/text2.dart';
 import 'package:flutter/material.dart';

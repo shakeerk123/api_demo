@@ -1,4 +1,5 @@
 import 'package:api_demo/app/controller/main_controller.dart';
+import 'package:api_demo/app/views/books/book_screen.dart';
 
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/favourites/fav_screen.dart';
@@ -16,11 +17,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List pages = [const HomeScreen(),  SearchScreen(),   const FavoritesScreen()];
+   final MovieController controller = Get.put(MovieController());
+  List pages = [const HomeScreen(),  SearchScreen(), const BooksScreen(),  const FavoritesScreen()];
 
   @override
   Widget build(BuildContext context) {
-    final MovieController controller = Get.put(MovieController());
+   
     return Scaffold(
         body: Obx(() => pages[controller.currentIndex.value]),
         bottomNavigationBar: Obx(
@@ -37,6 +39,8 @@ class _MainPageState extends State<MainPage> {
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.search), label: "search"),
+                    BottomNavigationBarItem(
+                    icon: Icon(Icons.book), label: "books"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.favorite), label: "favorite"),
               ]),

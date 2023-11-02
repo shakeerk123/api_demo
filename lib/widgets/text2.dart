@@ -21,7 +21,7 @@ class Text2 extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: fontSize,
-        color: Theme.of(context).primaryTextTheme.bodyText2?.color,
+        color: Theme.of(context).primaryTextTheme.bodyMedium?.color,
         fontWeight: isBold ? FontWeight.bold : null,
       ),
       maxLines: maxLines,

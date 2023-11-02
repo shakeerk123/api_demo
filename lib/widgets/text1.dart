@@ -12,7 +12,7 @@ class Text1 extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: Theme.of(context).primaryTextTheme.bodyText1?.color,
+        color: Theme.of(context).primaryTextTheme.bodyLarge?.color,
         fontSize: fontSize,
         fontWeight: isBold ? FontWeight.bold : null,
       ),

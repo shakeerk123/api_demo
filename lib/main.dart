@@ -1,9 +1,5 @@
 import 'package:api_demo/app/views/bottombar/main_page.dart';
-import 'package:api_demo/app/views/login/login_screen.dart';
-import 'package:api_demo/app/views/onboarding/onboarding.dart';
-import 'package:api_demo/app/views/signup/signup_screen.dart';
 import 'package:api_demo/utils/colors.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +19,7 @@ class MyApp extends StatelessWidget {
      // getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
       title: 'Cinemaven',
-      home: MainPage(),
+      home: const MainPage(),
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colours.scaffoldBgColor,
         useMaterial3: true,

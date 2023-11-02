@@ -37,7 +37,7 @@ class OnBoardingScreen extends StatelessWidget {
       foregroundColor: Colors.blue,
       introductionList: list,
       onTapSkipButton: () {
-        Get.to(MainPage());
+        Get.to(const MainPage());
       },
     );
   }
