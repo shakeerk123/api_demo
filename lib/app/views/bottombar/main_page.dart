@@ -1,5 +1,6 @@
 import 'package:api_demo/app/controller/main_controller.dart';
 import 'package:api_demo/app/views/books/book_screen.dart';
+import 'package:api_demo/app/views/favourites/favorite_scree.dart';
 
 import 'package:api_demo/app/views/home/home_screen.dart';
 import 'package:api_demo/app/views/favourites/fav_screen.dart';
@@ -18,7 +19,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
    final MovieController controller = Get.put(MovieController());
-  List pages = [const HomeScreen(),  SearchScreen(), const BooksScreen(),  const FavoritesScreen()];
+  List pages = [const HomeScreen(),  SearchScreen(), FavoriteMoviesScreen(),  ];
 
   @override
   Widget build(BuildContext context) {

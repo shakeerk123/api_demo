@@ -1,34 +1,22 @@
+
+import 'package:api_demo/app/models/movie_model.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FavoriteController extends GetxController {
-  final RxList<String> favoriteTitles = <String>[].obs;
+  RxList<Result> favoriteMovies = <Result>[].obs;
 
-  Future<void> toggleFavorite(String title) async {
-    final prefs = await SharedPreferences.getInstance();
-
-    if (favoriteTitles.contains(title)) {
-      favoriteTitles.remove(title);
-    } else {
-      favoriteTitles.add(title);
-    }
-
-    await prefs.setStringList('favorite_titles', favoriteTitles);
+  // Add a movie to the list of favorite movies.
+  void addFavorite(Result movie) {
+    favoriteMovies.add(movie);
   }
 
-  bool isFavorite(String title) {
-    return favoriteTitles.contains(title);
+  // Remove a movie from the list of favorite movies.
+  void removeFavorite(Result movie) {
+    favoriteMovies.remove(movie);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadFavoriteTitles();
-  }
-
-  Future<void> loadFavoriteTitles() async {
-    final prefs = await SharedPreferences.getInstance();
-    final storedTitles = prefs.getStringList('favorite_titles') ?? [];
-    favoriteTitles.assignAll(storedTitles);
+  // Check if a movie is in the list of favorite movies.
+  bool isFavorite(Result movie) {
+    return favoriteMovies.contains(movie);
   }
 }

@@ -78,4 +78,12 @@ class Result {
         voteAverage: json["vote_average"]?.toDouble() ?? 0.0, 
         voteCount: json["vote_count"],
       );
+      Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'overview': overview,
+      // Add other properties that you want to include in the JSON representation
+    };
+  }
 }
